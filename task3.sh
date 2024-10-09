@@ -1,0 +1,2 @@
+#!/bin/bash
+gawk -vFPAT='[^,]*|"[^"]*"' '$3 == 2 && $12 ~ /S/ {print $0}' titanic.csv | sed 's/male/M/g; s/feM/F/g' | gawk -vFPAT='[^,]*|"[^"]*"' '{sum += $6; numc += 1} END {print "Average age: "sum/numc}'
